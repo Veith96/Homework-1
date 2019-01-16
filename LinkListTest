@@ -1,0 +1,228 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
+
+/**
+ *
+ * @author Kaitlin Veith
+ */
+public class LinkedListTest {
+
+    public LinkedListTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() {
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+    }
+
+    @Before
+    public void setUp() {
+    }
+
+    @After
+    public void tearDown() {
+    }
+
+    /**
+     * Test of next method, of class LinkedList.
+     */
+    @Test
+    public void testNext() {
+        System.out.println("Test Index 0");
+        //test with an empty list object
+        linkedList instance = new linkedList();
+        //expected result
+        instance.next();
+
+        //confirm that the test will fail due to the absence of next
+        ILinkedList expResult = null;
+        ILinkedList result = instance.next();
+        assertEquals(expResult, result);
+
+    }
+
+    /**
+     * Test of last method, of class LinkedList.
+     */
+    @Test
+    public void testLast() {
+        System.out.println("after");
+        linkedList instance = new linkedList();
+        linkedList instance2 = new linkedList();
+        linkedList instance3 = new linkedList();
+        linkedList instance4 = new linkedList();
+
+        instance.set(3);
+        instance2.set(4);
+        instance3.set(5);
+        instance4.set(7);
+
+        instance.last();
+
+        Object result = instance4.get();
+        Object expResult = 7;
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of after method, of class LinkedList.
+     */
+    @Test
+    public void testAfter() {
+        System.out.println("after");
+        int n = 2;
+        linkedList instance = new linkedList();
+        linkedList instance2 = new linkedList();
+        linkedList instance3 = new linkedList();
+        linkedList instance4 = new linkedList();
+
+        instance.set(3);
+        instance2.set(4);
+        instance3.set(5);
+        instance4.set(7);
+
+        instance.after(n);
+
+        Object result = instance3.get();
+        Object expResult = 5;
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of detach method, of class LinkedList.
+     */
+    @Test
+    public void testDetach() {
+        System.out.println("setup");
+        linkedList instance = new linkedList();
+        linkedList instance2 = new linkedList();
+        linkedList instance3 = new linkedList();
+        linkedList instance4 = new linkedList();
+
+        instance.set(3);
+        instance2.set(4);
+        instance3.set(5);
+        instance4.set(7);
+
+        instance.setNext(instance2);
+        instance2.setNext(instance3);
+        instance3.setNext(instance4);
+
+
+        instance.detach();
+        System.out.println("test");
+        Object result = instance.get();
+        Object expResult = 3;
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of get method, of class LinkedList.
+     */
+    @Test
+    public void testGet() {
+        System.out.println("get");
+        linkedList instance = new linkedList();
+        instance.set(9);
+
+        Object expResult = 9;
+        Object result = instance.get();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    /**
+     * Test of set method, of class LinkedList.
+     */
+    @Test
+    public void testSet() {
+        System.out.println("set");
+        linkedList instance = new linkedList();
+        instance.set(9);
+
+        Object result = instance.get();
+        Object expResult = 9;
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+
+    }
+
+    /**
+     * Test of setNext method, of class LinkedList.
+     */
+    @Test
+    public void testSetNext() {
+        System.out.println("setNext");
+        linkedList instance = new linkedList();
+        linkedList instance2 = new linkedList();
+        instance.setNext(instance2);
+
+        Object result = instance.next();
+        Object expResult = instance2;
+
+
+    }
+
+    /**
+     * Test of append method, of class LinkedList.
+     */
+    @Test
+    public void testAppend() {
+        System.out.println("append");
+        linkedList instance = new linkedList();
+        linkedList instance2 = new linkedList();
+        instance.set(3);
+        instance2.set(4);
+
+        instance.append(instance2);
+
+        Object result = instance.next();
+        Object expResult = instance2.last();
+        assertEquals(expResult, result);
+
+    }
+
+    /**
+     * Test of insert method, of class LinkedList.
+     */
+    @Test
+    public void testInsert() {
+        System.out.println("insert");
+        linkedList instance1 = new linkedList();
+        linkedList instance2 = new linkedList();
+        linkedList instance3 = new linkedList();
+        linkedList instance4 = new linkedList();
+        linkedList newFront = new linkedList();
+
+        instance1.set(9);
+        instance2.set(1);
+        instance3.set(1);
+        instance4.set(3);
+        newFront.set(7);
+        instance1.setNext(instance2);
+        instance2.setNext(instance3);
+        instance3.setNext(instance4);
+
+        instance1.insert(newFront);
+
+        Object result = instance1;
+        Object expResult = newFront.next();
+        assertEquals(expResult, result);
+        
+    }
+
+}

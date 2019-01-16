@@ -1,0 +1,135 @@
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+//package c346linkedlist;
+
+/**
+ *
+ * @author Kaitlin Veith
+ */
+public class linkedList<T> implements ILinkedList<T> {
+
+    T data;
+    private ILinkedList<T> next;
+
+    //no Argument constructor
+    public linkedList(){
+        T data = null;
+        this.next = null;
+    }
+
+    //constructor
+    public linkedList(T data){
+        this.data = data;
+        this.next = null;
+    }
+
+
+    /**
+     * Get the next list element
+     * @return the next element
+     */
+    public ILinkedList<T> next(){
+        return next;
+
+    }
+
+    /**
+     * Gets the last element in the list
+     * @return the node at the end of the list
+     */
+    public ILinkedList last(){
+        ILinkedList<T> temp = this;
+        while(this.next != null){
+            temp = this.next;
+        }
+        return temp;
+    }
+
+    /**
+     * Get the element n elements down the list
+     * @param n the number of elements to skip
+     * @return the element n away
+     */
+    public ILinkedList after(int n){
+        ILinkedList<T> temp = this;
+        for (int i = 0; i < n; i++) {
+            temp = this.next;
+        }
+        return temp;
+    }
+
+    /**
+     * Removes the next element (sets null)
+     * @return the previously next element
+     */
+    public ILinkedList detach(){
+        ILinkedList<T> temp1 = this;
+        ILinkedList<T> temp2 = this.next();
+        temp1 = this;
+        temp2 = this.next();
+
+        return temp1;
+
+    }
+
+
+    /**
+     * Gets the current value
+     * @return the current value
+     */
+    @Override
+    public T get(){
+        return this.data;
+
+    }
+
+    /**
+     * Sets the value of this node
+     * @param value the new value
+     */
+    @Override
+    public void set(T value){
+        this.data = value;
+    }
+
+    /**
+     * Sets the next element in the list
+     * @param next the next element
+     *
+     * Example: (1->2->3).setNext(4) => 1->4
+     */
+    @Override
+    public void setNext(ILinkedList next){
+        this.next = next;
+    }
+
+    /**
+     * Sets the next element after this current element
+     * @param next the next element
+     *
+     * Example: (1->2->3).append(4) => 1->2->3->4
+     */
+    public void append(ILinkedList next){
+        this.next = next;
+        next.last();
+    }//append
+
+    /**
+     * Adds the current list as the next of newFirst
+     * @param newFirst the new head of the list
+     *
+     * Example: (1->2->3).insert(4) => 4->1->2->3
+     */
+    public void insert(ILinkedList newFirst){
+        linkedList<T> temp = this;
+        linkedList<T> temp2;
+        temp2 = (linkedList<T>) newFirst;
+        temp2.next = temp;
+
+    }//insert
+
+}
